@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Literata:opsz,wght@7..72,500;7..72,700;7..72,800&display=swap">
-<link rel="stylesheet" href="../assets/css/style.css?v=20261121a">
+<link rel="stylesheet" href="../assets/css/style.css?v=20261122a">
 </head>
 <body>
 <header id="site-header"></header>
@@ -18,39 +18,82 @@
   <div class="page-head">
     <span class="kicker">Liên hệ</span>
     <h1>Liên hệ Bác sĩ Hồi sức</h1>
-    <p class="lead">Mời demo thiết bị, đặt lịch đào tạo bằng simulator, gửi bài dịch cho thư viện hoặc góp ý nội dung.</p>
+    <p class="lead">Tư vấn sản phẩm, báo giá, demo thiết bị tại khoa, đào tạo bằng simulator, góp bài cho thư viện. Để lại lời nhắn, chúng tôi sẽ liên hệ lại.</p>
   </div>
   <div class="split">
-    <div>
-      <ul class="help-list">
-        <li><strong>Đăng ký demo thiết bị tại khoa</strong><span>Đặt máy tại khoa để dùng thử trong một thời gian, kèm hướng dẫn sử dụng.</span></li>
-        <li><strong>Đào tạo bằng simulator</strong><span>Buổi thực hành đọc monitor và xử trí tình huống cho bác sĩ, điều dưỡng.</span></li>
-        <li><strong>Góp bài cho thư viện</strong><span>Gửi bản dịch, tóm tắt nghiên cứu hoặc quy trình của khoa để chia sẻ.</span></li>
-        <li><strong>Góp ý nội dung</strong><span>Báo lỗi, đề xuất bài nghiên cứu hoặc kịch bản simulator mới.</span></li>
-      </ul>
-      <div class="page-block prose">
-        <h2>Về Bác sĩ Hồi sức</h2>
-        <p>Bác sĩ Hồi sức là trang học tập cho bác sĩ hồi sức tích cực và gây mê hồi sức: tin nghiên cứu, thư viện tóm tắt tiếng Việt và simulator thiết bị theo dõi. Nội dung chỉ dùng để tham khảo và đào tạo, không thay thế quyết định lâm sàng.</p>
+    <form class="contact-form" id="contact-form" novalidate>
+      <div class="form-row">
+        <label>Họ tên <span class="req">*</span><input name="ten" required maxlength="120" autocomplete="name"></label>
+        <label>Khoa<input name="khoa" maxlength="120" placeholder="Ví dụ: Hồi sức tích cực"></label>
       </div>
-    </div>
-    <aside><div class="contact-card" id="contact"></div></aside>
+      <label>Bệnh viện / đơn vị<input name="benh_vien" maxlength="160" autocomplete="organization"></label>
+      <div class="form-row">
+        <label>Điện thoại<input name="dien_thoai" type="tel" maxlength="30" autocomplete="tel"></label>
+        <label>Email<input name="email" type="email" maxlength="160" autocomplete="email"></label>
+      </div>
+      <div class="form-row">
+        <label>Nội dung cần trao đổi<select name="nhu_cau">
+          <option>Tư vấn sản phẩm</option><option>Báo giá</option><option>Demo thiết bị tại khoa</option>
+          <option>Đào tạo, simulator</option><option>Góp bài cho thư viện</option><option>Khác</option>
+        </select></label>
+        <label>Thiết bị quan tâm<select name="thiet_bi">
+          <option>Chưa xác định</option><option>NeuroSmart logO</option><option>MPR2 logO</option><option>HemoSphere Alta</option><option>Khác</option>
+        </select></label>
+      </div>
+      <label>Lời nhắn<textarea name="noi_dung" rows="5" maxlength="2500" placeholder="Bạn cần chúng tôi hỗ trợ điều gì?"></textarea></label>
+      <label class="hp" aria-hidden="true">Để trống ô này<input name="website" tabindex="-1" autocomplete="off"></label>
+      <p class="byline">Thông tin chỉ dùng để liên hệ lại với bạn. Cần ít nhất điện thoại hoặc email.</p>
+      <button class="btn btn-primary" type="submit">Gửi lời nhắn</button>
+      <p class="form-msg" id="form-msg" role="status" aria-live="polite"></p>
+    </form>
+    <aside style="display:grid;gap:20px;align-content:start">
+      <div class="contact-card" id="contact"></div>
+      <div class="prose">
+        <h2 style="font-size:1.3rem">Về Bác sĩ Hồi sức</h2>
+        <p>Trang học tập cho bác sĩ hồi sức tích cực và gây mê hồi sức: tin nghiên cứu, thư viện tóm tắt tiếng Việt và simulator thiết bị theo dõi. Nội dung chỉ dùng để tham khảo và đào tạo, không thay thế quyết định lâm sàng.</p>
+        <p id="minh-bach" class="byline"></p>
+      </div>
+    </aside>
   </div>
 </main>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
-  var c = window.CATRUC_LIEN_HE || {}, e = window.CatrucUI.esc, rows = [];
-  if (c.ten) rows.push('<div class="row"><span>Người phụ trách</span><strong>' + e(c.ten) + (c.vai_tro ? "</strong><span>&nbsp;· " + e(c.vai_tro) + "</span>" : "</strong>") + "</div>");
-  if (c.email) rows.push('<div class="row"><span>Email</span><a href="mailto:' + e(c.email) + '">' + e(c.email) + "</a></div>");
-  if (c.dien_thoai) rows.push('<div class="row"><span>Điện thoại</span><span>' + e(c.dien_thoai) + "</span></div>");
-  if (c.zalo) rows.push('<div class="row"><span>Zalo</span><span>' + e(c.zalo) + "</span></div>");
-  if (!c.email && !c.dien_thoai && !c.zalo) rows.push('<p class="byline">Email và số điện thoại đang được cập nhật.</p>');
-  document.getElementById("contact").innerHTML = '<span class="kicker">Thông tin liên hệ</span>' + rows.join("");
+  var e = window.CatrucUI.esc, base = window.CATRUC_LIEN_HE || {};
+  function showContact(c) {
+    var rows = [];
+    if (c.ten) rows.push('<div class="row"><span>Người phụ trách</span><strong>' + e(c.ten) + "</strong></div>");
+    if (c.dien_thoai) rows.push('<div class="row"><span>Điện thoại</span><span>' + e(c.dien_thoai) + "</span></div>");
+    if (c.zalo) rows.push('<div class="row"><span>Zalo</span><span>' + e(c.zalo) + "</span></div>");
+    if (c.email) rows.push('<div class="row"><span>Email</span><span>' + e(c.email) + "</span></div>");
+    if (!c.email && !c.dien_thoai && !c.zalo) rows.push('<p class="byline">Điện thoại và email đang được cập nhật. Bạn có thể để lại lời nhắn bằng form bên cạnh.</p>');
+    document.getElementById("contact").innerHTML = '<span class="kicker">Thông tin liên hệ</span>' + rows.join("");
+    document.getElementById("minh-bach").textContent = c.minh_bach || "";
+  }
+  showContact(base);
+  window.BSHS_FS.getDoc("cai_dat/chung").then(function (c) { if (c) showContact(Object.assign({}, base, c)); }).catch(function () {});
+
+  var f = document.getElementById("contact-form"), msg = document.getElementById("form-msg");
+  f.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    var d = {}; Array.prototype.forEach.call(f.elements, function (el) { if (el.name) d[el.name] = el.value.trim(); });
+    if (d.website) return;
+    if (!d.ten) { msg.textContent = "Vui lòng nhập họ tên."; f.ten.focus(); return; }
+    if (!d.dien_thoai && !d.email) { msg.textContent = "Vui lòng nhập điện thoại hoặc email để chúng tôi liên hệ lại."; f.dien_thoai.focus(); return; }
+    var btn = f.querySelector("button"); btn.disabled = true; msg.textContent = "Đang gửi…";
+    window.BSHS_FS.createContact({ ten: d.ten, khoa: d.khoa, benh_vien: d.benh_vien, email: d.email, dien_thoai: d.dien_thoai,
+      nhu_cau: d.nhu_cau, thiet_bi: d.thiet_bi, noi_dung: d.noi_dung, tao_luc: new Date(), trang_thai: "moi" })
+      .then(function () { f.reset(); msg.textContent = "Đã gửi. Cảm ơn bạn, chúng tôi sẽ liên hệ lại sớm."; })
+      .catch(function () { msg.textContent = "Chưa gửi được. Vui lòng thử lại sau ít phút."; })
+      .then(function () { btn.disabled = false; });
+  });
 });
 </script>
 <footer id="site-footer"></footer>
-<script src="../assets/data/tin-tuc.js?v=20261121a"></script>
-<script src="../assets/js/site.js?v=20261121a"></script>
-<script src="../assets/js/hinh.js?v=20261121a"></script>
-<script src="../assets/js/render.js?v=20261121a"></script>
+<script src="../assets/data/tin-tuc.js?v=20261122a"></script>
+<script src="../assets/js/firebase-config.js?v=20261122a"></script>
+<script src="../assets/js/fs-public.js?v=20261122a"></script>
+<script src="../assets/js/site.js?v=20261122a"></script>
+<script src="../assets/js/hinh.js?v=20261122a"></script>
+<script src="../assets/js/render.js?v=20261122a"></script>
 </body>
 </html>

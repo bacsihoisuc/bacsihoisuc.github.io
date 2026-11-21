@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Literata:opsz,wght@7..72,500;7..72,700;7..72,800&display=swap">
-<link rel="stylesheet" href="./assets/css/style.css?v=20261121a">
+<link rel="stylesheet" href="./assets/css/style.css?v=20261122a">
 </head>
 <body>
 <header id="site-header"></header>
@@ -88,8 +88,8 @@
   </section>
 </main>
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-  var UI = window.CatrucUI, tin = (window.CATRUC_TIN || []).slice(), papers = window.CATRUC_NGHIEN_CUU || [];
+document.addEventListener("DOMContentLoaded", function () { window.BSHS_FS.news().then(function (all) {
+  var UI = window.CatrucUI, tin = all.slice(), papers = window.CATRUC_NGHIEN_CUU || [];
   var fi = tin.findIndex(function (t) { return t.noi_bat; }); if (fi < 0) fi = 0;
   var lead = tin.splice(fi, 1)[0];
   document.getElementById("lead").innerHTML = UI.lead(lead);
@@ -111,13 +111,15 @@ document.addEventListener("DOMContentLoaded", function () {
     return '<li><a href="' + UI.href(link) + '"><span>' + UI.esc(t) + '</span><span class="count">' + n + " bài</span></a></li>";
   }).join("") + '<li><a href="' + UI.href("nghien-cuu/index.html?chu-de=" + encodeURIComponent("Nghiên cứu Việt Nam")) + '"><span>Nghiên cứu Việt Nam</span><span class="count">' +
     papers.filter(function (p) { return p.viet_nam; }).length + " bài</span></a></li>";
-});
+}); });
 </script>
 <footer id="site-footer"></footer>
-<script src="./assets/data/tin-tuc.js?v=20261121a"></script>
-<script src="./assets/js/site.js?v=20261121a"></script>
-<script src="./assets/js/hinh.js?v=20261121a"></script>
-<script src="./assets/js/render.js?v=20261121a"></script>
-<script src="./assets/data/nghien-cuu.js?v=20261121a"></script>
+<script src="./assets/data/tin-tuc.js?v=20261122a"></script>
+<script src="./assets/js/firebase-config.js?v=20261122a"></script>
+<script src="./assets/js/fs-public.js?v=20261122a"></script>
+<script src="./assets/js/site.js?v=20261122a"></script>
+<script src="./assets/js/hinh.js?v=20261122a"></script>
+<script src="./assets/js/render.js?v=20261122a"></script>
+<script src="./assets/data/nghien-cuu.js?v=20261122a"></script>
 </body>
 </html>

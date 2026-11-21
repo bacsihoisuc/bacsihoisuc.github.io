@@ -8,22 +8,23 @@
   function ext(link) { return /^https?:\/\//.test(link || "") ? ' target="_blank" rel="noopener"' : ""; }
   function kicker(t) { return '<span class="kicker k-' + esc(t.loai) + '">' + esc(LOAI[t.loai] || t.loai) + (t.chu_de ? " · " + esc(t.chu_de) : "") + "</span>"; }
   function fig(t, slice) { return '<span class="fig">' + window.CatrucHinh.svg(t.hinh, "Minh họa: " + t.tieu_de, slice) + "</span>"; }
+  function linkOf(t) { return t.link || ("tin-tuc/bai.html?id=" + encodeURIComponent(t.id)); }
   function byline(t) { return t.nguon ? '<span class="byline">' + esc(t.nguon) + "</span>" : ""; }
 
   var UI = {
-    esc: esc, href: href,
+    esc: esc, href: href, linkOf: linkOf,
     story: function (t, o) {
       o = o || {};
-      return '<a class="story" href="' + href(t.link) + '"' + ext(t.link) + ">" + (o.fig === false ? "" : fig(t)) + kicker(t) +
+      return '<a class="story" href="' + href(linkOf(t)) + '"' + ext(linkOf(t)) + ">" + (o.fig === false ? "" : fig(t)) + kicker(t) +
         '<span class="story-title">' + esc(t.tieu_de) + "</span>" +
         (o.sum ? '<span class="story-sum">' + esc(t.tom_tat) + "</span>" : "") + byline(t) + "</a>";
     },
     lead: function (t) {
-      return '<a class="lead-story" href="' + href(t.link) + '"' + ext(t.link) + '><span class="ls-text">' + kicker(t) +
+      return '<a class="lead-story" href="' + href(linkOf(t)) + '"' + ext(linkOf(t)) + '><span class="ls-text">' + kicker(t) +
         '<span class="story-title">' + esc(t.tieu_de) + '</span><span class="story-sum">' + esc(t.tom_tat) + "</span>" + byline(t) + "</span>" + fig(t, true) + "</a>";
     },
     feature: function (t) {
-      return '<a class="feature-card" href="' + href(t.link) + '"' + ext(t.link) + ">" + fig(t) + '<span class="fc-cap">' + kicker(t).replace("kicker ", "kicker k-dark ") +
+      return '<a class="feature-card" href="' + href(linkOf(t)) + '"' + ext(linkOf(t)) + ">" + fig(t) + '<span class="fc-cap">' + kicker(t).replace("kicker ", "kicker k-dark ") +
         '<span class="story-title">' + esc(t.tieu_de) + '</span><span class="story-sum">' + esc(t.tom_tat) + "</span>" + byline(t) + "</span></a>";
     },
     paperItem: function (p) {

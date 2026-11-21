@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="tin-tuc">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bài viết · Bác sĩ Hồi sức</title>
+<meta name="description" content="Bài viết trên Bác sĩ Hồi sức.">
+<meta name="theme-color" content="#0b1620">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Literata:opsz,wght@7..72,500;7..72,700;7..72,800&display=swap">
+<link rel="stylesheet" href="../assets/css/style.css?v=20261122a">
+</head>
+<body>
+<header id="site-header"></header>
+<main class="wrap">
+  <article class="article" id="bai"><p class="empty">Đang tải bài…</p></article>
+</main>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var UI = window.CatrucUI, e = UI.esc, LOAI = window.CATRUC_LOAI_TIN || {}, box = document.getElementById("bai");
+  var id = new URLSearchParams(location.search).get("id");
+  function para(t) { return String(t || "").split(String.fromCharCode(10)).filter(Boolean).map(function (x) { return "<p>" + e(x) + "</p>"; }).join(""); }
+  function sec(title, body) { return body ? '<section class="a-sec"><h2>' + title + "</h2>" + body + "</section>" : ""; }
+  if (!id) { box.innerHTML = '<p class="empty">Không tìm thấy bài.</p>'; return; }
+  window.BSHS_FS.getDoc("tin/" + encodeURIComponent(id)).then(function (t) {
+    if (!t) { box.innerHTML = '<p class="empty">Bài chưa được đăng hoặc đã gỡ. <a href="index.html">Xem tin khác</a>.</p>'; return; }
+    document.title = t.tieu_de + " · Bác sĩ Hồi sức";
+    var tags = [];
+    if (t.khung === "abstract") tags.push('<span class="a-tag">Điểm tin, tóm tắt từ abstract</span>');
+    if (t.ai_ho_tro) tags.push('<span class="a-tag">' + (t.nguoi_duyet_cm ? "Biên soạn với hỗ trợ của AI · Duyệt: " + e(t.nguoi_duyet_cm) : "Biên soạn với hỗ trợ của AI, chờ bác sĩ duyệt") + "</span>");
+    var quick = (t.tom_nhanh || []).filter(Boolean);
+    box.innerHTML = '<a class="back-link" href="index.html">← Tin tức</a>' +
+      '<header class="a-head"><span class="kicker k-' + e(t.loai) + '">' + e(LOAI[t.loai] || t.loai) + (t.chu_de ? " · " + e(t.chu_de) : "") + "</span>" +
+      "<h1>" + e(t.tieu_de) + "</h1>" + (t.tom_tat ? '<p class="lead">' + e(t.tom_tat) + "</p>" : "") +
+      '<p class="byline">' + e(t.nguon || "") + (t.dang_luc ? " · Đăng " + new Date(t.dang_luc).toLocaleDateString("vi-VN") : "") + "</p>" +
+      (tags.length ? '<div class="a-tags">' + tags.join("") + "</div>" : "") + "</header>" +
+      '<span class="fig a-fig">' + window.CatrucHinh.svg(t.hinh, "Minh họa: " + t.tieu_de) + "</span>" +
+      '<div class="a-body">' +
+      (quick.length ? '<section class="a-quick"><h2>Tóm nhanh</h2><ul>' + quick.map(function (q) { return "<li>" + e(q) + "</li>"; }).join("") + "</ul></section>" : "") +
+      sec("Bối cảnh", para(t.boi_canh)) + sec("Thiết kế", para(t.thiet_ke)) + sec("Kết quả chính", para(t.ket_qua)) +
+      sec("Ý nghĩa lâm sàng", para(t.y_nghia)) + para(t.noi_dung) +
+      (t.khung === "abstract" ? sec("Hạn chế", "<p>Chưa đánh giá được bản đầy đủ; cần thận trọng khi áp dụng.</p>") : sec("Hạn chế", para(t.han_che))) +
+      (t.link_goc ? '<p class="a-src">Bài gốc: <a href="' + e(t.link_goc) + '" target="_blank" rel="noopener">' + e(t.nguon || t.link_goc) + " ↗</a></p>" : "") +
+      "</div>";
+  }).catch(function () { box.innerHTML = '<p class="empty">Chưa tải được bài. Vui lòng thử lại.</p>'; });
+});
+</script>
+<footer id="site-footer"></footer>
+<script src="../assets/data/tin-tuc.js?v=20261122a"></script>
+<script src="../assets/js/firebase-config.js?v=20261122a"></script>
+<script src="../assets/js/fs-public.js?v=20261122a"></script>
+<script src="../assets/js/site.js?v=20261122a"></script>
+<script src="../assets/js/hinh.js?v=20261122a"></script>
+<script src="../assets/js/render.js?v=20261122a"></script>
+</body>
+</html>
