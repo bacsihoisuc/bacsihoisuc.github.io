@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="vi" data-root="../../" data-page="simulator">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Simulator NeuroSmart logO · Bác sĩ Hồi sức</title>
+<meta name="description" content="Mô phỏng màn hình cảm ứng NeuroSmart logO: ICP, CPP, pO2 mô não, PRx và CPPopt, với kịch bản lâm sàng để giảng dạy và tự học.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Literata:opsz,wght@7..72,500;7..72,700;7..72,800&family=Roboto:wght@300;400;500;700&display=swap">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#0b1620">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20261121a">
+<link rel="stylesheet" href="../../assets/css/simulator.css?v=20261121a">
+</head>
+<body data-device="neurosmart">
+<header id="site-header"></header>
+<main>
+  <div class="wrap page-head">
+    <span class="kicker k-simulation">Simulator · Theo dõi thần kinh đa thông số</span>
+    <h1>NeuroSmart logO</h1>
+    <p class="lead">Màn hình dựng theo hướng dẫn sử dụng của RAUMEDIC. Chọn kịch bản rồi chạm thẳng lên màn hình như trên máy thật.</p>
+  </div>
+
+  <div class="wrap sim-layout">
+    <section class="sim-main" aria-label="Màn hình mô phỏng">
+      <div class="device">
+        <div class="device-bar">
+          <span class="device-name">NeuroSmart logO</span>
+          <span class="device-actions"><button type="button" class="device-btn" id="btn-full">Toàn màn hình</button><span class="device-tag">Mô phỏng đào tạo</span></span>
+        </div>
+        <canvas id="sim-screen" width="1280" height="800" aria-label="Màn hình NeuroSmart logO mô phỏng"></canvas>
+      </div>
+
+      <p class="touch-hint">Chạm số liệu để phóng to, ô giới hạn xám để đặt ngưỡng báo động, bong bóng để xem tin nhắn, nút →0← để zero ART, cột phải để chuyển màn hình. Nút hướng dẫn (bong bóng cuối cột phải) liệt kê đủ thao tác.</p>
+      <div class="screen-tabs" id="screen-tabs">
+        <button type="button" data-screen="home" aria-pressed="true">Màn hình chính</button>
+        <button type="button" data-screen="wave" aria-pressed="false">Sóng</button>
+        <button type="button" data-screen="auto" aria-pressed="false">Tự điều hòa (PRx, CPPopt)</button>
+      </div>
+
+      <div class="controls">
+        <div class="ctl-group">
+          <button type="button" class="btn btn-primary" id="btn-play">Tạm dừng</button>
+          <button type="button" class="btn btn-ghost" id="btn-restart">Chạy lại</button>
+          <button type="button" class="btn btn-ghost" id="btn-next">Đến mốc tiếp</button>
+        </div>
+        <div class="ctl-group">
+          <label for="speed">Tốc độ</label>
+          <select id="speed">
+            <option value="1">1× (thời gian thật)</option>
+            <option value="5" selected>5×</option>
+            <option value="20">20×</option>
+          </select>
+          <span class="sim-clock num" id="sim-clock">00:00 / 10:00</span>
+        </div>
+      </div>
+      <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
+    </section>
+
+    <aside class="sim-side">
+      <div class="side-block">
+        <h2 class="side-title">Kịch bản</h2>
+        <div class="scenario-list" id="scenario-list"></div>
+      </div>
+      <div class="side-block">
+        <h2 class="side-title">Chế độ</h2>
+        <div class="seg small">
+          <button type="button" id="mode-teach" aria-pressed="true">Giảng viên</button>
+          <button type="button" id="mode-learn" aria-pressed="false">Tự học có câu hỏi</button>
+        </div>
+      </div>
+      <div class="side-block">
+        <h2 class="side-title">Can thiệp</h2>
+        <div class="interventions" id="interventions"></div>
+      </div>
+      <div class="side-block note-block">
+        <h2 class="side-title">Diễn biến</h2>
+        <p id="sim-note">Đang tải kịch bản…</p>
+      </div>
+      <div class="side-block question" id="question" hidden>
+        <h2 class="side-title">Câu hỏi</h2>
+        <p class="q-text" id="q-text"></p>
+        <div class="q-opts" id="q-opts"></div>
+        <p class="q-why" id="q-why" hidden></p>
+        <button type="button" class="btn btn-primary" id="q-continue" hidden>Tiếp tục</button>
+      </div>
+    </aside>
+  </div>
+
+  <div class="wrap section">
+    <div class="note"><strong>Lưu ý:</strong> Đây là mô phỏng để đào tạo, không dùng cho bệnh nhân. Bố cục màn hình dựng theo hướng dẫn sử dụng NeuroSmart logO của RAUMEDIC; số liệu và kịch bản là minh họa, đang chờ bác sĩ thẩm định. Ngưỡng ICP 22 mmHg và CPP 60 mmHg theo Brain Trauma Foundation 2016 và SIBICC 2019. Xem thêm <a href="../hemosphere/index.html">simulator HemoSphere Alta</a>.</div>
+  </div>
+</main>
+<footer id="site-footer"></footer>
+<script src="../../assets/js/site.js?v=20261121a"></script>
+<script src="../../assets/js/simulator.js?v=20261121a"></script>
+<script src="../../assets/js/sim-page.js?v=20261121a"></script>
+</body>
+</html>

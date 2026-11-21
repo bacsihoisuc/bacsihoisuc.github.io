@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="lien-he">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Liên hệ · Bác sĩ Hồi sức</title>
+<meta name="description" content="Liên hệ Bác sĩ Hồi sức: demo thiết bị, đào tạo bằng simulator, góp bài cho thư viện.">
+<meta name="theme-color" content="#0b1620">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Literata:opsz,wght@7..72,500;7..72,700;7..72,800&display=swap">
+<link rel="stylesheet" href="../assets/css/style.css?v=20261121a">
+</head>
+<body>
+<header id="site-header"></header>
+<main class="wrap">
+  <div class="page-head">
+    <span class="kicker">Liên hệ</span>
+    <h1>Liên hệ Bác sĩ Hồi sức</h1>
+    <p class="lead">Mời demo thiết bị, đặt lịch đào tạo bằng simulator, gửi bài dịch cho thư viện hoặc góp ý nội dung.</p>
+  </div>
+  <div class="split">
+    <div>
+      <ul class="help-list">
+        <li><strong>Đăng ký demo thiết bị tại khoa</strong><span>Đặt máy tại khoa để dùng thử trong một thời gian, kèm hướng dẫn sử dụng.</span></li>
+        <li><strong>Đào tạo bằng simulator</strong><span>Buổi thực hành đọc monitor và xử trí tình huống cho bác sĩ, điều dưỡng.</span></li>
+        <li><strong>Góp bài cho thư viện</strong><span>Gửi bản dịch, tóm tắt nghiên cứu hoặc quy trình của khoa để chia sẻ.</span></li>
+        <li><strong>Góp ý nội dung</strong><span>Báo lỗi, đề xuất bài nghiên cứu hoặc kịch bản simulator mới.</span></li>
+      </ul>
+      <div class="page-block prose">
+        <h2>Về Bác sĩ Hồi sức</h2>
+        <p>Bác sĩ Hồi sức là trang học tập cho bác sĩ hồi sức tích cực và gây mê hồi sức: tin nghiên cứu, thư viện tóm tắt tiếng Việt và simulator thiết bị theo dõi. Nội dung chỉ dùng để tham khảo và đào tạo, không thay thế quyết định lâm sàng.</p>
+      </div>
+    </div>
+    <aside><div class="contact-card" id="contact"></div></aside>
+  </div>
+</main>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var c = window.CATRUC_LIEN_HE || {}, e = window.CatrucUI.esc, rows = [];
+  if (c.ten) rows.push('<div class="row"><span>Người phụ trách</span><strong>' + e(c.ten) + (c.vai_tro ? "</strong><span>&nbsp;· " + e(c.vai_tro) + "</span>" : "</strong>") + "</div>");
+  if (c.email) rows.push('<div class="row"><span>Email</span><a href="mailto:' + e(c.email) + '">' + e(c.email) + "</a></div>");
+  if (c.dien_thoai) rows.push('<div class="row"><span>Điện thoại</span><span>' + e(c.dien_thoai) + "</span></div>");
+  if (c.zalo) rows.push('<div class="row"><span>Zalo</span><span>' + e(c.zalo) + "</span></div>");
+  if (!c.email && !c.dien_thoai && !c.zalo) rows.push('<p class="byline">Email và số điện thoại đang được cập nhật.</p>');
+  document.getElementById("contact").innerHTML = '<span class="kicker">Thông tin liên hệ</span>' + rows.join("");
+});
+</script>
+<footer id="site-footer"></footer>
+<script src="../assets/data/tin-tuc.js?v=20261121a"></script>
+<script src="../assets/js/site.js?v=20261121a"></script>
+<script src="../assets/js/hinh.js?v=20261121a"></script>
+<script src="../assets/js/render.js?v=20261121a"></script>
+</body>
+</html>

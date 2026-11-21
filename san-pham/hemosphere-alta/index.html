@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="vi" data-root="../../" data-page="san-pham">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HemoSphere Alta · Bác sĩ Hồi sức</title>
+<meta name="description" content="HemoSphere Alta: Nền tảng theo dõi huyết động với màn hình cảm ứng: cung lượng tim từ đường động mạch, chỉ số dự báo tụt huyết áp và công cụ điều trị theo đích.">
+<meta name="theme-color" content="#0b1620">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Literata:opsz,wght@7..72,500;7..72,700;7..72,800&display=swap">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20261121a">
+</head>
+<body>
+<header id="site-header"></header>
+<main class="wrap">
+  <a class="back-link" href="../index.html">← Danh mục sản phẩm</a>
+  <section class="prod-hero">
+    <div class="ph-text">
+      <span class="kicker">BD · Theo dõi huyết động</span>
+      <h1>HemoSphere Alta</h1>
+      <p>Nền tảng theo dõi huyết động với màn hình cảm ứng: cung lượng tim từ đường động mạch, chỉ số dự báo tụt huyết áp và công cụ điều trị theo đích.</p>
+      <div class="btn-row"><a class="btn" style="background:#6ee7a8;color:#05221a" href="../../simulator/hemosphere/index.html">Thử trên simulator</a><a class="btn" style="background:#ffffff;color:#0b1620" href="../../lien-he/index.html">Đăng ký demo tại khoa</a></div>
+    </div>
+    <span class="device-art red" data-hinh="dev-alta" data-slice data-label="Minh họa HemoSphere Alta"></span>
+  </section>
+
+  <section class="page-block">
+    <div class="sec-head"><h2>Điểm nổi bật</h2><span class="sec-mark" aria-hidden="true"></span></div>
+    <div class="features"><div><span class="fnum">01</span><h3>FloTrac và Acumen IQ</h3><p>CO, SV, SVV, PPV, SVR, dP/dt và Ea dyn từ đường huyết áp động mạch.</p></div><div><span class="fnum">02</span><h3>HPI dự báo tụt huyết áp</h3><p>Cảnh báo khi nguy cơ tụt huyết áp tăng, kèm màn hình phân tích các thông số liên quan.</p></div><div><span class="fnum">03</span><h3>Goal Directed Therapy</h3><p>Đặt đích cho từng thông số, theo dõi thời gian nằm trong đích.</p></div><div><span class="fnum">04</span><h3>Test đáp ứng dịch</h3><p>Nghiệm pháp nâng chân thụ động hoặc bolus dịch, so sánh thay đổi SV.</p></div><div><span class="fnum">05</span><h3>Nhiều chế độ xem</h3><p>Trend, Cockpit, Split, Physiology; thao tác cảm ứng, hỗ trợ cử chỉ và giọng nói.</p></div><div><span class="fnum">06</span><h3>Mở rộng theo cấu hình</h3><p>Kết nối thêm các công nghệ theo dõi khác của BD tùy cấu hình máy.</p></div></div>
+  </section>
+
+  <section class="page-block split">
+    <div>
+      <div class="sec-head"><h2>Dùng trong lâm sàng</h2></div>
+      <ul class="help-list"><li><strong>Gây mê phẫu thuật nguy cơ cao</strong><span>Phát hiện sớm nguy cơ tụt huyết áp trong mổ với HPI.</span></li><li><strong>Hồi sức tích cực</strong><span>Đánh giá đáp ứng dịch, tối ưu huyết động theo đích.</span></li><li><strong>Đào tạo</strong><span>Luyện đọc màn hình và xử trí trên simulator trước khi dùng thật.</span></li></ul>
+    </div>
+    <aside>
+      <div class="sec-head"><h2>Nghiên cứu liên quan</h2></div>
+      <div id="related"></div>
+    </aside>
+  </section>
+
+  <div class="cta-band page-block">
+    <div style="display:grid;gap:6px"><h2>Cần hồ sơ kỹ thuật hoặc demo?</h2><p style="color:var(--muted)">Trang này chỉ giới thiệu tính năng. Thông số chi tiết và cấu hình, vui lòng liên hệ.</p></div>
+    <a class="btn btn-primary" href="../../lien-he/index.html">Liên hệ</a>
+  </div>
+  <p class="byline page-block">Hình trên trang là minh họa, không phải ảnh sản phẩm. Tên thương mại thuộc về nhà sản xuất.</p>
+</main>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var ids = ["tl007","tl005"], ps = window.CATRUC_NGHIEN_CUU || [];
+  document.getElementById("related").innerHTML = ids.map(function (id) { return ps.find(function (p) { return p.id === id; }); }).filter(Boolean)
+    .map(function (p) { return '<a class="list-item" href="' + window.CatrucUI.href("nghien-cuu/index.html#" + p.id) + '"><span class="story-title" style="font-size:1.05rem">' + window.CatrucUI.esc(p.ten) + '</span><span class="byline">' + window.CatrucUI.esc(p.nguon) + "</span></a>"; }).join("");
+});
+</script>
+<footer id="site-footer"></footer>
+<script src="../../assets/data/tin-tuc.js?v=20261121a"></script>
+<script src="../../assets/js/site.js?v=20261121a"></script>
+<script src="../../assets/js/hinh.js?v=20261121a"></script>
+<script src="../../assets/js/render.js?v=20261121a"></script>
+<script src="../../assets/data/nghien-cuu.js?v=20261121a"></script>
+</body>
+</html>

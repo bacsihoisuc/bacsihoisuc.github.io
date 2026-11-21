@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="thu-vien">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Guideline · Bác sĩ Hồi sức</title>
+<meta name="description" content="Guideline và đồng thuận chuyên gia về hồi sức thần kinh và huyết động, tóm tắt tiếng Việt.">
+<meta name="theme-color" content="#0b1620">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Literata:opsz,wght@7..72,500;7..72,700;7..72,800&display=swap">
+<link rel="stylesheet" href="../assets/css/style.css?v=20261121a">
+</head>
+<body>
+<header id="site-header"></header>
+<main class="wrap">
+  <div class="page-head">
+    <span class="kicker k-guideline">Thư viện nghiên cứu</span>
+    <h1>Guideline</h1>
+    <p class="lead">Hướng dẫn của hội chuyên ngành và đồng thuận chuyên gia, tóm tắt tiếng Việt kèm link bản gốc.</p>
+  </div>
+  <p class="byline" id="count" style="margin-bottom:8px"></p>
+  <div class="paper-list" id="list"></div>
+</main>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  window.CatrucThuVien.mount({ list: "list", count: "count", filter: function (p) { return p.chu_de.indexOf("Guideline") >= 0; } });
+});
+</script>
+<footer id="site-footer"></footer>
+<script src="../assets/data/tin-tuc.js?v=20261121a"></script>
+<script src="../assets/js/site.js?v=20261121a"></script>
+<script src="../assets/js/hinh.js?v=20261121a"></script>
+<script src="../assets/js/render.js?v=20261121a"></script>
+<script src="../assets/data/nghien-cuu.js?v=20261121a"></script>
+<script src="../assets/js/thu-vien.js?v=20261121a"></script>
+</body>
+</html>

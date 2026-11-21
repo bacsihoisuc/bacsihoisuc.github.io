@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="thu-vien">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nghiên cứu dịch · Bác sĩ Hồi sức</title>
+<meta name="description" content="Tóm tắt tiếng Việt các nghiên cứu về áp lực nội sọ, tự điều hòa não, oxy mô não, huyết động và gây mê.">
+<meta name="theme-color" content="#0b1620">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Literata:opsz,wght@7..72,500;7..72,700;7..72,800&display=swap">
+<link rel="stylesheet" href="../assets/css/style.css?v=20261121a">
+</head>
+<body>
+<header id="site-header"></header>
+<main class="wrap">
+  <div class="page-head">
+    <span class="kicker">Thư viện nghiên cứu</span>
+    <h1>Nghiên cứu dịch</h1>
+    <p class="lead">Tóm tắt tiếng Việt do đội ngũ Bác sĩ Hồi sức biên dịch: kết quả chính, ý nghĩa lâm sàng và link bài gốc.</p>
+  </div>
+  <div class="toolbar">
+    <label for="q" class="visually-hidden">Tìm kiếm</label>
+    <input type="search" id="q" placeholder="Tìm theo tên bài, tác giả, từ khóa (ví dụ: CPPopt, HPI)">
+  </div>
+  <div class="chips" id="chips" style="margin-bottom:12px"></div>
+  <p class="byline" id="count" style="margin:4px 0 8px"></p>
+  <div class="paper-list" id="list"></div>
+  <div class="page-block"><div class="note"><strong>Bản nháp:</strong> các tóm tắt có nhãn “Bản nháp, chờ bác sĩ duyệt” được soạn từ bài gốc và đang chờ thẩm định. Luôn đọc bài gốc trước khi áp dụng.</div></div>
+</main>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  window.CatrucThuVien.mount({ list: "list", count: "count", chips: "chips", search: "q", filter: function (p) { return !(p.chu_de.length === 1 && p.chu_de[0] === "Guideline"); } });
+});
+</script>
+<footer id="site-footer"></footer>
+<script src="../assets/data/tin-tuc.js?v=20261121a"></script>
+<script src="../assets/js/site.js?v=20261121a"></script>
+<script src="../assets/js/hinh.js?v=20261121a"></script>
+<script src="../assets/js/render.js?v=20261121a"></script>
+<script src="../assets/data/nghien-cuu.js?v=20261121a"></script>
+<script src="../assets/js/thu-vien.js?v=20261121a"></script>
+</body>
+</html>

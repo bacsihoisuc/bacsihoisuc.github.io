@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-page="tin-tuc">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tin tức · Bác sĩ Hồi sức</title>
+<meta name="description" content="Tin nghiên cứu, sản phẩm, sáng tạo và đào tạo trong hồi sức tích cực và gây mê hồi sức.">
+<meta name="theme-color" content="#0b1620">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Literata:opsz,wght@7..72,500;7..72,700;7..72,800&display=swap">
+<link rel="stylesheet" href="../assets/css/style.css?v=20261121a">
+</head>
+<body>
+<header id="site-header"></header>
+<main class="wrap">
+  <div class="page-head">
+    <span class="kicker">Tin tức</span>
+    <h1>Tin hồi sức và gây mê</h1>
+    <p class="lead">Nghiên cứu mới, tin sản phẩm, sáng tạo trong hồi sức tích cực, gây mê hồi sức và hoạt động đào tạo.</p>
+  </div>
+  <nav class="filter-bar" id="filter" aria-label="Lọc theo chuyên mục"></nav>
+  <div class="news-list" id="news"></div>
+</main>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var UI = window.CatrucUI, LOAI = window.CATRUC_LOAI_TIN || {}, tin = window.CATRUC_TIN || [];
+  var loai = new URLSearchParams(location.search).get("loai") || "";
+  if (!LOAI[loai]) loai = "";
+  var f = document.getElementById("filter");
+  f.innerHTML = '<a class="chip" href="index.html"' + (loai ? "" : ' aria-current="true"') + ">Tất cả</a>" +
+    Object.keys(LOAI).map(function (k) { return '<a class="chip" href="index.html?loai=' + k + '"' + (k === loai ? ' aria-current="true"' : "") + ">" + UI.esc(LOAI[k]) + "</a>"; }).join("");
+  var shown = tin.filter(function (t) { return !loai || t.loai === loai; });
+  if (loai) document.querySelector(".page-head h1").textContent = LOAI[loai];
+  document.getElementById("news").innerHTML = shown.length ? shown.map(function (t) { return UI.story(t, { sum: true }); }).join("") :
+    '<p class="empty">Chưa có tin trong mục này. ' + (loai === "su-kien" ? 'Khoa muốn tổ chức buổi đào tạo bằng simulator? <a href="' + UI.href("lien-he/index.html") + '">Liên hệ</a>.' : "") + "</p>";
+});
+</script>
+<footer id="site-footer"></footer>
+<script src="../assets/data/tin-tuc.js?v=20261121a"></script>
+<script src="../assets/js/site.js?v=20261121a"></script>
+<script src="../assets/js/hinh.js?v=20261121a"></script>
+<script src="../assets/js/render.js?v=20261121a"></script>
+</body>
+</html>

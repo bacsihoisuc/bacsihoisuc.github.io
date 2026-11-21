@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="vi" data-root="../../" data-page="san-pham">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>NeuroSmart logO · Bác sĩ Hồi sức</title>
+<meta name="description" content="NeuroSmart logO: Monitor thần kinh đa thông số với màn hình cảm ứng màu: áp lực nội sọ, áp lực tưới máu não, oxy mô não và nhiệt độ não, kèm chỉ số tự điều hòa ngay tại giường.">
+<meta name="theme-color" content="#0b1620">
+<link rel="icon" href="../../assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&family=Literata:opsz,wght@7..72,500;7..72,700;7..72,800&display=swap">
+<link rel="stylesheet" href="../../assets/css/style.css?v=20261121a">
+</head>
+<body>
+<header id="site-header"></header>
+<main class="wrap">
+  <a class="back-link" href="../index.html">← Danh mục sản phẩm</a>
+  <section class="prod-hero">
+    <div class="ph-text">
+      <span class="kicker">RAUMEDIC · Theo dõi thần kinh</span>
+      <h1>NeuroSmart logO</h1>
+      <p>Monitor thần kinh đa thông số với màn hình cảm ứng màu: áp lực nội sọ, áp lực tưới máu não, oxy mô não và nhiệt độ não, kèm chỉ số tự điều hòa ngay tại giường.</p>
+      <div class="btn-row"><a class="btn" style="background:#6ee7a8;color:#05221a" href="../../simulator/neurosmart/index.html">Thử trên simulator</a><a class="btn" style="background:#ffffff;color:#0b1620" href="../../lien-he/index.html">Đăng ký demo tại khoa</a></div>
+    </div>
+    <span class="device-art " data-hinh="dev-neurosmart" data-slice data-label="Minh họa NeuroSmart logO"></span>
+  </section>
+
+  <section class="page-block">
+    <div class="sec-head"><h2>Điểm nổi bật</h2><span class="sec-mark" aria-hidden="true"></span></div>
+    <div class="features"><div><span class="fnum">01</span><h3>ICP, CPP, oxy mô não, nhiệt độ</h3><p>Hai kênh áp lực xâm lấn (ICP, ART, CVP), một kênh áp lực oxy mô não, hai kênh nhiệt độ não, hiển thị cùng lúc.</p></div><div><span class="fnum">02</span><h3>PRx, ORx và CPPopt</h3><p>Tính chỉ số tự điều hòa áp lực và oxy, ước tính CPP tối ưu kèm đường hồi quy, giúp cá thể hóa đích CPP.</p></div><div><span class="fnum">03</span><h3>Màn hình cảm ứng màu 10 inch</h3><p>Xem sóng, xu hướng, giới hạn báo động; tùy chỉnh màu và thang đo.</p></div><div><span class="fnum">04</span><h3>Lưu dữ liệu đến 10 ngày</h3><p>Hai cổng USB để chép dữ liệu ra USB hoặc máy tính, xem lại bằng phần mềm DataView.</p></div><div><span class="fnum">05</span><h3>Nối với monitor đầu giường</h3><p>Ngõ ra analog chuyển giá trị áp lực hoặc oxy mô não sang monitor bệnh nhân.</p></div><div><span class="fnum">06</span><h3>Chạy pin trong</h3><p>Hoạt động bằng pin từ 4 giờ trở lên, nặng khoảng 3 kg, gắn được lên cột.</p></div></div>
+  </section>
+
+  <section class="page-block split">
+    <div>
+      <div class="sec-head"><h2>Dùng trong lâm sàng</h2></div>
+      <ul class="help-list"><li><strong>Chấn thương sọ não nặng</strong><span>Theo dõi ICP, CPP và oxy mô não theo khung Brain Trauma Foundation và SIBICC.</span></li><li><strong>Chảy máu dưới nhện, chảy máu não</strong><span>Theo dõi CPP so với CPPopt và oxy mô não trong giai đoạn sớm.</span></li><li><strong>Hồi sức thần kinh sau mổ</strong><span>Theo dõi liên tục tại khoa hồi sức, lưu dữ liệu để hội chẩn và nghiên cứu.</span></li></ul>
+    </div>
+    <aside>
+      <div class="sec-head"><h2>Nghiên cứu liên quan</h2></div>
+      <div id="related"></div>
+    </aside>
+  </section>
+
+  <div class="cta-band page-block">
+    <div style="display:grid;gap:6px"><h2>Cần hồ sơ kỹ thuật hoặc demo?</h2><p style="color:var(--muted)">Trang này chỉ giới thiệu tính năng. Thông số chi tiết và cấu hình, vui lòng liên hệ.</p></div>
+    <a class="btn btn-primary" href="../../lien-he/index.html">Liên hệ</a>
+  </div>
+  <p class="byline page-block">Hình trên trang là minh họa, không phải ảnh sản phẩm. Tên thương mại thuộc về nhà sản xuất.</p>
+</main>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  var ids = ["tl021","tl017","tl020","tl019","tl022"], ps = window.CATRUC_NGHIEN_CUU || [];
+  document.getElementById("related").innerHTML = ids.map(function (id) { return ps.find(function (p) { return p.id === id; }); }).filter(Boolean)
+    .map(function (p) { return '<a class="list-item" href="' + window.CatrucUI.href("nghien-cuu/index.html#" + p.id) + '"><span class="story-title" style="font-size:1.05rem">' + window.CatrucUI.esc(p.ten) + '</span><span class="byline">' + window.CatrucUI.esc(p.nguon) + "</span></a>"; }).join("");
+});
+</script>
+<footer id="site-footer"></footer>
+<script src="../../assets/data/tin-tuc.js?v=20261121a"></script>
+<script src="../../assets/js/site.js?v=20261121a"></script>
+<script src="../../assets/js/hinh.js?v=20261121a"></script>
+<script src="../../assets/js/render.js?v=20261121a"></script>
+<script src="../../assets/data/nghien-cuu.js?v=20261121a"></script>
+</body>
+</html>
